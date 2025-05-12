@@ -1,6 +1,9 @@
 #!/bin/bash
 
 WORKTREE_TMP_DIR=/tmp/pwa-publish
+if [ -d ${WORKTREE_TMP_DIR} ] && git worktree list --porcelain | grep -q "worktree ${WORKTREE_TMP_DIR}"; then
+  git worktree remove --force ${WORKTREE_TMP_DIR}
+fi
 if [[ -d ${WORKTREE_TMP_DIR} ]]; then
   rm -rf ${WORKTREE_TMP_DIR}
 fi
