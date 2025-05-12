@@ -1,1 +1,0 @@
-import{_ as o,C as r,E as t,F as n,G as s,H as l,Q as p}from"./index.fb9dba3e.js";import{Q as c}from"./QPage.7f0b0367.js";const d=r({name:"IndexPage"});function f(a,e,i,u,m,x){return t(),n(c,{class:"flex flex-center"},{default:s(()=>[l(p,{color:"primary",label:"Ludo",onClick:e[0]||(e[0]=_=>a.$router.push("/ludo"))})]),_:1})}var Q=o(d,[["render",f]]);export{Q as default};
