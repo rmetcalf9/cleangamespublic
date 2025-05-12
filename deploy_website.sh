@@ -53,7 +53,7 @@ git push
 git worktree add ${WORKTREE_TMP_DIR} publish/main
 
 # 2. Copy the contents of dist/pwa into the worktree
-rsync -av --delete dist/pwa/ ${WORKTREE_TMP_DIR}
+rsync -av --delete --exclude='.git' dist/pwa/ ${WORKTREE_TMP_DIR}
 
 # 3. Commit and push
 cd /tmp/pwa-publish
