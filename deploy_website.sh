@@ -61,14 +61,14 @@ git worktree add ${WORKTREE_TMP_DIR} publish/main
 # 2. Copy the contents of dist/pwa into the worktree
 rsync -av --delete --exclude='.git' dist/pwa/ ${WORKTREE_TMP_DIR}
 
-# 3. Commit and push
-cd /tmp/pwa-publish
-git add .
-git commit -m "Deploy latest PWA build"
-git push --force publish main
-
-# 4. Clean up
-cd ${START_DIR}
-git worktree remove ${WORKTREE_TMP_DIR}
+# # 3. Commit and push
+# cd ${WORKTREE_TMP_DIR}
+# git add .
+# git commit -m "Deploy latest PWA build"
+# git push --force publish main
+#
+# # 4. Clean up
+# cd ${START_DIR}
+# git worktree remove ${WORKTREE_TMP_DIR}
 
 echo "Finished deploying version ${NEWVERSION}"
