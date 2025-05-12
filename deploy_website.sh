@@ -46,7 +46,21 @@ cp -r ./redirects/* ./dist/pwa
 git add --all
 git commit -m"New website version ${NEWVERSION}"
 git push
-git push publish `git subtree split --prefix dist/pwa main`:gh-pages --force
-git subtree push --prefix dist/pwa publish gh-pages
+
+# 1. Create a temporary worktree for the publish branch
+git worktree add /tmp/pwa-publish publish/main
+
+# 2. Copy the contents of dist/pwa into the worktree
+rsync -av --delete dist/pwa/ /tmp/pwa-publish/
+
+# 3. Commit and push
+cd /tmp/pwa-publish
+git add .
+git commit -m "Deploy latest PWA build"
+git push publish main
+
+# 4. Clean up
+cd ${START_DIR}
+git worktree remove /tmp/pwa-publish
 
 echo "Finished deploying version ${NEWVERSION}"
