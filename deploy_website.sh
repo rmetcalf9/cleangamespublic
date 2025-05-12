@@ -1,6 +1,9 @@
 #!/bin/bash
 
 WORKTREE_TMP_DIR=/tmp/pwa-publish
+if [[ -d ${WORKTREE_TMP_DIR} ]]; then
+  rm -rf ${WORKTREE_TMP_DIR}
+fi
 
 ##git subtree pull --prefix=dist/spa origin gh-pages (If change made upstream)
 export START_DIR=$(pwd)
