@@ -46,7 +46,7 @@ cp -r ./redirects/* ./dist/pwa
 git add --all
 git commit -m"New website version ${NEWVERSION}"
 git push
-# git push origin `git subtree split --prefix dist/pwa main`:gh-pages --force
-# git subtree push --prefix dist/pwa origin gh-pages
-#
+git push publish `git subtree split --prefix dist/pwa main`:gh-pages --force
+git subtree push --prefix dist/pwa publish gh-pages
+
 echo "Finished deploying version ${NEWVERSION}"
