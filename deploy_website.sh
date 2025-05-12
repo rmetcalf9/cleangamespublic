@@ -65,7 +65,7 @@ rsync -av --delete --exclude='.git' dist/pwa/ ${WORKTREE_TMP_DIR}
 cd /tmp/pwa-publish
 git add .
 git commit -m "Deploy latest PWA build"
-git push -force publish main
+git push --force publish main
 
 # 4. Clean up
 cd ${START_DIR}
