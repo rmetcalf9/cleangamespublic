@@ -1,5 +1,7 @@
 #!/bin/bash
 
+WORKTREE_TMP_DIR=/tmp/pwa-publish
+
 ##git subtree pull --prefix=dist/spa origin gh-pages (If change made upstream)
 export START_DIR=$(pwd)
 export GITROOT=${START_DIR}
@@ -48,10 +50,10 @@ git commit -m"New website version ${NEWVERSION}"
 git push
 
 # 1. Create a temporary worktree for the publish branch
-git worktree add /tmp/pwa-publish publish/main
+git worktree add ${WORKTREE_TMP_DIR} publish/main
 
 # 2. Copy the contents of dist/pwa into the worktree
-rsync -av --delete dist/pwa/ /tmp/pwa-publish/
+rsync -av --delete dist/pwa/ ${WORKTREE_TMP_DIR}
 
 # 3. Commit and push
 cd /tmp/pwa-publish
@@ -61,6 +63,6 @@ git push publish main
 
 # 4. Clean up
 cd ${START_DIR}
-git worktree remove /tmp/pwa-publish
+git worktree remove ${WORKTREE_TMP_DIR}
 
 echo "Finished deploying version ${NEWVERSION}"
