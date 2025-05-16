@@ -1,6 +1,5 @@
 (function () {
   const script = document.currentScript;
-
   if (script) {
     try {
       const scriptUrl = new URL(script.src);
